@@ -1,0 +1,26 @@
+@startuml
+package "Client" {
+  [Postman or curl] <<client>>
+}
+
+package "Controller Layer" {
+  [TaskController] <<controller>>
+}
+
+package "Service Layer" {
+  [TaskService] <<service>>
+}
+
+package "Repository Layer" {
+  [TaskRepository] <<repository>>
+}
+
+package "Database" {
+  [H2] <<database>>
+}
+
+[Postman or curl] --> [TaskController]
+[TaskController] --> [TaskService]
+[TaskService] --> [TaskRepository]
+[TaskRepository] --> [H2]
+@enduml
